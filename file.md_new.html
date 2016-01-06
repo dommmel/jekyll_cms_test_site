@@ -1,0 +1,58 @@
+---
+layout: default
+test: this
+nerds:
+- application: kernel
+  version: MAIN !!!!!!
+  path: "/usr/local/lib/erlang/lib/kernel-2.15.3"
+  subnerds:
+  - application: kernel
+    version: subversion 2
+    path: "/usr/local/lib/erlang/lib/kernel-2.15.3"
+    subsubnerds:
+    - application: kernel
+      version: NEW VALUE
+      path: "/usr/local/lib/erlang/lib/kernel-2.15.3"
+  - application: kernel
+    version: subversion 2
+    path: "/usr/local/lib/erlang/lib/kernel-2.15.3"
+    subsubnerds:
+    - application: kernel
+      version: subversion 2
+      path: "/usr/local/lib/erlang/lib/kernel-2.15.3"
+- application: kernel
+  version: mainsdas asd
+  path: "/usr/local/lib/erlang/lib/kernel-2.15.3"
+  subnerds:
+  - application: kernel
+    version: subversion 2
+    path: "/usr/local/lib/erlang/lib/kernel-2.15.3"
+    subsubnerds:
+    - application: kernel
+      version: subversion 2
+      path: "/usr/local/lib/erlang/lib/kernel-2.15.3"
+  - application: kernel
+    version: subversion 2
+    path: "/usr/local/lib/erlang/lib/kernel-2.15.3"
+    subsubnerds:
+    - application: kernel
+      version: CCCC
+      path: "/usr/local/lib/erlang/lib/kernel-2.15.3"
+---
+  <p> This is a editable region "{{ page.test |e }}" </p>
+
+<ul>
+{% for nerd in page.nerds %}
+  <li>{{ nerd.version |e }}</li>
+  <ul>
+  {% for subnerd in nerd.subnerds %}
+  <li> {{subnerd.version |e }}</li>
+  <ul>
+    {% for subsubnerd in subnerd.subsubnerds %}
+    <li>{{ subsubnerd.version |e }}</li>
+    {% endfor %}
+  </ul>
+  {% endfor %}
+  </ul>
+{% endfor %}
+</ul>
